@@ -1,0 +1,7 @@
+*.flaskenv
+*venv
+*sample.py
+*test.py
+*data.db
+*.vscode
+*__pycache__
