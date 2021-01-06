@@ -1,7 +1,7 @@
-# store-api
+# Store-API
 
 ## Description
-This project is implemented using Flask and is a REST API for a sotre. 
+This project is implemented using Flask and is a REST API for a store. 
 It can be used to add items, fetch items or an item, edit items and delete items from a store.
 
 ## Installation
