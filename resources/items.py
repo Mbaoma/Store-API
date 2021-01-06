@@ -12,7 +12,13 @@ class ItemsInShop(Resource):
                             required=True,
                             help='Must not be left blank'
         )
-    data = parser.parse_args
+    parser.add_argument(
+                            'store_id',
+                            type=int,
+                            required=True,
+                            help='Every item needs a store id'
+        )
+    #data = parser.parse_args
 
     @jwt_required()
     def get(self, name):
@@ -30,7 +36,7 @@ class ItemsInShop(Resource):
             return {'message': "item '{}' already exists".format(name)}, 400
 
         data = ItemsInShop.parser.parse_args()
-        item = ItemModel(name, data['price'])
+        item = ItemModel(name, data['price'], data['store_id'])
 
         try:
             item.save_to_db()
@@ -53,7 +59,7 @@ class ItemsInShop(Resource):
         item = ItemModel.find_item_by_name(name)
 
         if item is None:
-            item = ItemModel(name, data['price'])
+            item = ItemModel(name, data['price'], data['store_id'])
         else:
             item.price = data['price']
         item.save_to_db()
@@ -63,19 +69,7 @@ class ItemsInShop(Resource):
 
 class ItemsList(Resource):
     def get(self):
-        connection = sqlite3.connect("data.db")
-        cursor = connection.cursor()
-        query = "SELECT * FROM items"
-        result = cursor.execute(query)
-        items = []
-
-        for i in result:
-            items.append({
-                'item name': i[0],
-                'price': i[1]
-            })
-
-        connection.close()
+        items = ItemModel.query.all()
         return {
-            'Items': items
+            'Items': list(map(lambda x: x.json(), items)) #[item.json() for item in items]
         }, 200
