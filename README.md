@@ -2,7 +2,8 @@
 
 ## Description
 This project is implemented using Flask and is a REST API for a store. 
-It can be used to add items, fetch items or an item, edit items and delete items from a store.
+The endpoints can be used to add items to, fetch item(s) from, edit items in, and delete items from a store.
+Also names of stores can be added and retrieved from the database using the assigned endpoints.
 
 ## Installation
 -   Ensure you have [Python](www.python.org) installed on your PC
