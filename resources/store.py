@@ -5,7 +5,7 @@ class Store(Resource):
     def get(self, name):
         store = StoreModel.find_item_by_name(name)
         if store:
-            return store.json
+            return store.json()
         else:
             return {'message': 'Store not found'}, 404
 
@@ -21,7 +21,7 @@ class Store(Resource):
             return {'message': 'An error occured while creating store'}, 500
         
     def delete(self, name):
-        store = StoreModel.find_item_by_name()
+        store = StoreModel.find_item_by_name(name)
         if store:
             store.delete_from_db()
         return {'message': 'Store deleted'}
