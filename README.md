@@ -64,5 +64,7 @@ pip install -r requirements.txt
         11. /store/name [GET]
             ![image](https://user-images.githubusercontent.com/49791498/104425294-cc7f4600-5580-11eb-82fb-601c4d69ce67.png)
  
+ This project is hosted on [heroku](https://my-shops.herokuapp.com/)
+ 
 
 
