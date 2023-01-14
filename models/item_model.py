@@ -18,8 +18,8 @@ class ItemModel(db.Model):
 
     def json(self):
         return {
-            'Name': self.name,
-            'Price (N)': self.price
+            'name': self.name,
+            'price_n': self.price
         }
     
     @classmethod
